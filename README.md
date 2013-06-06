@@ -1,5 +1,4 @@
 #JS-snips
-***
 
 A collection of Javascript utility functions. 
 The functions were collected accross the web or created by myself.
@@ -8,7 +7,6 @@ The functions were collected accross the web or created by myself.
 
 
 ###Array functions
-
 - contains
 - grep
 - highest
@@ -18,7 +16,6 @@ The functions were collected accross the web or created by myself.
 - unique
 
 ###String functions
-
 - escapeHTML
 - excerpt
 - isEmail
@@ -27,7 +24,6 @@ The functions were collected accross the web or created by myself.
 - truncateStr
 
 ###DOM functions
-
 - addClass
 - getText
 - hasClass
@@ -35,5 +31,4 @@ The functions were collected accross the web or created by myself.
 - removeClass
 
 ###Various functions
-
 - randomRGBColor
