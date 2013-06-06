@@ -7,7 +7,7 @@ The functions were collected accross the web or created by myself.
 Table of contents
 =================
 
-ARRAY functions
+Array functions
 ---------------
 - contains
 - grep
@@ -17,7 +17,7 @@ ARRAY functions
 - shuffle
 - unique
 
-STRING functions
+String functions
 ----------------
 - escapeHTML
 - excerpt
@@ -34,6 +34,6 @@ DOM functions
 - removeChildren
 - removeClass
 
-VARIOUS functions
+Various functions
 -----------------
 - randomRGBColor
