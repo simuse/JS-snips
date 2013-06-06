@@ -1,14 +1,14 @@
-JS-snips
-========
+#JS-snips
+***
 
 A collection of Javascript utility functions. 
 The functions were collected accross the web or created by myself.
 
-Table of contents
-=================
+##Table of contents
 
-Array functions
----------------
+
+###Array functions
+
 - contains
 - grep
 - highest
@@ -17,8 +17,8 @@ Array functions
 - shuffle
 - unique
 
-String functions
-----------------
+###String functions
+
 - escapeHTML
 - excerpt
 - isEmail
@@ -26,14 +26,14 @@ String functions
 - trim
 - truncateStr
 
-DOM functions
-----------------
+###DOM functions
+
 - addClass
 - getText
 - hasClass
 - removeChildren
 - removeClass
 
-Various functions
------------------
+###Various functions
+
 - randomRGBColor
