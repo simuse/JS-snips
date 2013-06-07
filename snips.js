@@ -162,9 +162,9 @@ function isURL(url) {
  */
 function prefixURL(url) {
     if (!/^https?:\/\//i.test(url)) {
-        url = 'http://' + url;
+        var prefixed = 'http://' + url;
     }
-    return url;
+    return prefixed;
 }
 
  /** 

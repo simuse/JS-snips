@@ -1,4 +1,3 @@
-
 /*
 	jQuery's document.ready/$(function(){}) should
 	you wish to use a cross-browser DOMReady solution
