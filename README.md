@@ -5,8 +5,7 @@ The functions were collected accross the web or created by myself.
 
 ##Table of contents
 
-
-###Array functions
+####Array functions
 - contains
 - grep
 - highest
@@ -15,20 +14,21 @@ The functions were collected accross the web or created by myself.
 - shuffle
 - unique
 
-###String functions
+####String functions
 - escapeHTML
 - excerpt
 - isEmail
 - isURL
+- prefixURL
 - trim
-- truncateStr
+- truncate
 
-###DOM functions
+####DOM functions
 - addClass
 - getText
 - hasClass
 - removeChildren
 - removeClass
 
-###Various functions
+####Various functions
 - randomRGBColor

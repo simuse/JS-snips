@@ -58,6 +58,10 @@ function lowest(arr) {
 	return l;  
 }
 
+function pop(arr) {
+
+}
+
 /** 
  * Removes specified item from array
  * @param {array} arr | The array to work on
@@ -149,6 +153,18 @@ function isEmail(email) {
 function isURL(url) {
 	var regex = new RegExp (/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[.\!\/\\w]*))?)/);
 	return regex.test(url);
+}
+
+/** 
+ * Adds http:// to a provided url
+ * @param {string} url
+ * @return {string}
+ */
+function prefixURL(url) {
+    if (!/^https?:\/\//i.test(url)) {
+        url = 'http://' + url;
+    }
+    return url;
 }
 
  /** 
@@ -253,3 +269,4 @@ function randomRGBColor() {
 	}
 	return 'rgb('+rdNum(255)+','+rdNum(255)+','+rdNum(255)+')';
 }
+
