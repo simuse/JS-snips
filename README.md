@@ -7,9 +7,10 @@ Author: Simon Vreux (www.simonvreux.be)
 ##Table of contents
 
 ####Array functions
-- contains : *checks if an array contains a specific item*
+- **contains** : *checks if an array contains a specific item*  
 ```
-contains([1,2,3,4], 3) // returns true
+contains([1,2,3,4], 3)  
+// returns true
 ```
 - grep
 - highest
