@@ -116,7 +116,7 @@ removeChildren(el);
 
 - **removeClass** : *removes a specific class from a DOM element*
 ```
-removeClass(el);
+removeClass(el, 'class');
 ```
 
 ####Various functions
