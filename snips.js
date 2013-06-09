@@ -58,10 +58,6 @@ function lowest(arr) {
 	return l;  
 }
 
-function pop(arr) {
-
-}
-
 /** 
  * Removes specified item from array
  * @param {array} arr | The array to work on
@@ -77,6 +73,7 @@ function removeItem(arr, item) {
             i++;
         }
     }
+    return arr;
 }
 
 /** 

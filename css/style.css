@@ -1,0 +1,18 @@
+body {
+	padding: 20px;
+}
+.test {
+	width: 100%;
+	border: 1px solid #eee;
+	padding: 0 10px;
+	margin-top: 5px;
+}
+p{
+	margin-left: 20px;
+}
+h5 {
+	background: #eee;
+}
+.red{
+	border-color: red;
+}
