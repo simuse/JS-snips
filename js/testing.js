@@ -2,7 +2,7 @@ $(function(){
 	
 	var array1 = [1,2,3,4,5,6,7,8,9,5,6,7],
 		array2 = ['banana', 'orange', 'tomato', 'peach', 'orange'],
-		lgString = "Souvent, pour s'amuser, les hommes d'équipage Prennent des albatros, vastes oiseaux des mers, Qui suivent, indolents compagnons de voyage, Le navire glissant sur les gouffres amers.";
+		lgString = "Souvent, pour s'amuser, les hommes d'équipage prennent des albatros, vastes oiseaux des mers, Qui suivent, indolents compagnons de voyage, Le navire glissant sur les gouffres amers.";
 	
 	// Contains
 	(function(){
@@ -69,7 +69,7 @@ $(function(){
 	// Excerpt
 	(function(){
 		var div = document.getElementById('excerpt'),
-			e = excerpt(lgString, 15);
+			e = excerpt(lgString, 5);
 		div.innerHTML = div.innerHTML + '<p>' + e + '</p>';
 	})();
 	
@@ -166,6 +166,4 @@ $(function(){
 		div.innerHTML = div.innerHTML + '<p>This div has a random background color</p>';
 	})();
 
-	
-		
 });
