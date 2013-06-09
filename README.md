@@ -1,7 +1,7 @@
 #JS-snips
 
 A collection of Javascript utility functions. 
-The functions were collected accross the web or created by myself.
+The functions were collected accross the web or created by myself.  
 Author: Simon Vreux (www.simonvreux.be)
 
 ##Table of contents
