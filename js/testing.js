@@ -166,4 +166,26 @@ $(function(){
 		div.innerHTML = div.innerHTML + '<p>This div has a random background color</p>';
 	})();
 
+	// formatDate
+	(function(){
+		var div = document.getElementById('formatDate'),
+			time = new Date().getTime();
+			formated = formatDate(time);
+		div.innerHTML = div.innerHTML + '<p>The formated date : <b>' + formated + '</b></p>';
+	})();
+
+	(function(){
+		var div = document.getElementById('getWindowSize'),
+			win = getWindowSize();
+		div.innerHTML = div.innerHTML + '<p>The window is <b>' + win[0] + 'px</b> wide and <b>' + win[1] + 'px</b> high</p>';
+	})();
+
+	(function(){
+		var el = document.getElementById('scroll');
+		window.onscroll = function() {
+			var scroll = getScrollTop();
+			el.innerHTML = scroll;
+		};
+	})();
+
 });

@@ -65,7 +65,7 @@ excerpt('Souvent, pour s'amuser, les hommes d'équipage prennent des albatros, v
 
 - **isEmail** : *checks if the string is a valid email*
 ```
-isEmail('simon.vreux@gmail.com');
+isEmail('example@email.com');
 // returns true
 ```
 
@@ -120,6 +120,17 @@ removeClass(el, 'class');
 ```
 
 ####Various functions
+<!-- - **getScrollTop** : *returns the scroll top position*
+```
+getScrollTop();
+``` -->
+
+- **formatDate** : *Formats a Javascript timestamp to a more readable format*  
+```
+formatDate(1372450892589);
+returns something like 22:21 Fri, 28 Jun 2013
+```
+
 - **randomRGBColor** : *returns a random RGB color*  
 ```
 randomRGBColor();

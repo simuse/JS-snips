@@ -158,8 +158,9 @@ function isURL(url) {
  * @return {string}
  */
 function prefixURL(url) {
+    var prefixed = url;
     if (!/^https?:\/\//i.test(url)) {
-        var prefixed = 'http://' + url;
+        prefixed = 'http://' + url;
     }
     return prefixed;
 }
@@ -251,19 +252,84 @@ function removeClass(node, className) {
     }
 }
 
+/** 
+ * Toggle element visibility
+ * @param {node} node | The node to work on
+ */
+function toggle(node) {
+    if ( node.style.display != 'none' ) {
+       node.style.display = 'none';
+    }
+    else {
+        node.style.display = '';
+    }
+}
+
 /*=============================================================
 * Various functions
 ==============================================================*/
+
+ /** 
+ * Formats a Javascript timestamp to a more readable format
+ * @return {string}
+ */
+function formatDate(timestamp) {
+    var d = new Date(timestamp),
+        days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        day = days[d.getDay()],
+        date = d.getDate(),
+        month = months[d.getMonth()],
+        year = d.getFullYear(),
+        hour = d.getHours() > 10 ? d.getHours() : '0' + d.getHours(),
+        minutes = d.getMinutes() > 10 ? d.getMinutes() : '0' + d.getMinutes(),
+        formated = hour + ':' + minutes + ' ' + day + ', ' + date + ' ' + month + ' ' + year;
+    return formated;
+}
+
+ /** 
+ * Returns the scroll top position
+ * @return {integer}
+ */
+function getScrollTop() {
+    var scrollTop = 0;
+    if( typeof( window.pageYOffset ) == 'number' ) {
+        //Netscape compliant
+        scrollTop = window.pageYOffset;
+    } else if( document.body && document.body.scrollTop ) {
+        //DOM compliant
+        scrollTop = document.body.scrollTop;
+    } else if( document.documentElement && document.documentElement.scrollTop ) {
+        //IE6 in 'standards compliant mode'
+        scrollTop = document.documentElement.scrollTop;
+    }
+    return scrollTop;
+}
+
+/** 
+ * Returns the current size of the browser window
+ * @return {array}
+ */
+function getWindowSize() {
+    var w = 0, h = 0;
+     if( typeof( window.innerWidth ) == 'number' ) {
+        w = window.innerWidth;
+        h = window.innerHeight;
+    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+        w = document.documentElement.clientWidth;
+        h = document.documentElement.clientHeight;
+    }
+    return [w, h];
+}
 
  /** 
  * Returns a random RGB color
  * @return {string}
  */
 function randomRGBColor() {
-	function rdNum(max){
-		var num = Math.floor(Math.random()*max);
-		return num;
-	}
-	return 'rgb('+rdNum(255)+','+rdNum(255)+','+rdNum(255)+')';
+    function rdNum(max){
+        var num = Math.floor(Math.random()*max);
+        return num;
+    }
+    return 'rgb('+rdNum(255)+','+rdNum(255)+','+rdNum(255)+')';
 }
-
