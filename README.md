@@ -127,10 +127,10 @@ formatDate(1372450892589);
 returns something like 22:21 Fri, 28 Jun 2013
 ```
 
-- **getScrollTop** : *return the scroll position of the window*  
+- **getScrollTop** : *returns the scroll position of the window*  
 ```
 getScrollTop();
-returns something 400
+returns an integer
 ```
 
 - **getWindowSize** : *returns an array containing the sizes of the window*  
