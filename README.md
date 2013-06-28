@@ -120,15 +120,23 @@ removeClass(el, 'class');
 ```
 
 ####Various functions
-<!-- - **getScrollTop** : *returns the scroll top position*
-```
-getScrollTop();
-``` -->
 
-- **formatDate** : *Formats a Javascript timestamp to a more readable format*  
+- **formatDate** : *formats a Javascript timestamp to a more readable format*  
 ```
 formatDate(1372450892589);
 returns something like 22:21 Fri, 28 Jun 2013
+```
+
+- **getScrollTop** : *return the scroll position of the window*  
+```
+getScrollTop();
+returns something 400
+```
+
+- **getWindowSize** : *returns an array containing the sizes of the window*  
+```
+getWindowSize();
+returns something like [1280, 720]
 ```
 
 - **randomRGBColor** : *returns a random RGB color*  
