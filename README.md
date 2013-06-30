@@ -5,7 +5,7 @@ Functions were collected accross the web or created by myself.
 
 ##Table of contents
 
-####Array functions
+### Array functions
 - **contains** : *checks if an array contains a specific item*  
 ```
 contains([1,2,3,4], 3);
@@ -49,7 +49,17 @@ unique([1, 1, 4, 5, 2, 3, 2, 4, 5]);
 // returns [1, 4, 5, 2, 3]
 ```
 
-####String functions
+
+
+
+
+### String functions
+- **capitalise** : *capitalises the first letter of a string*
+```
+capitalise('word');
+// returns 'Word'
+```
+
 - **escapeHTML** : *escapes html tags from a string*
 ```
 escapeHTML('<script>alert("Escape")</script>');
@@ -92,7 +102,17 @@ truncate('www.github.com', 7);
 // returns 'www.git'
 ```
 
-####DOM functions
+- **urlify** : *wraps urls in a string with 'a' tags*
+```
+urlify('www.github.com is web-based hosting service for software development projects');
+// returns '<a href="www.github.com">www.github.com</a> is web-based hosting service for software development projects'
+```
+
+
+
+
+
+### DOM functions
 - **addClass** : *add a class to to a DOM element*
 ```
 addClass(el, 'newClass');
@@ -118,7 +138,11 @@ removeChildren(el);
 removeClass(el, 'class');
 ```
 
-####Various functions
+
+
+
+
+### Various functions
 
 - **formatDate** : *formats a Javascript timestamp to a more readable format*  
 ```
@@ -142,4 +166,25 @@ returns something like [1280, 720]
 ```
 randomRGBColor();
 returns something like rgb(125,242,100)
+```
+
+
+
+
+
+### Cookie Functions
+
+- **createCookie** : *save a cookie*  
+```
+createCookie(name, value, days);
+```
+
+- **readCookie** : *returns the value of a cookie or false if the cookie is not found*  
+```
+readCookie(name);
+```
+
+- **eraseCookie** : *delete a cookie*  
+```
+eraseCookie(name);
 ```

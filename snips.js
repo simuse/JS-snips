@@ -111,6 +111,15 @@ function unique(arr) {
 * String functions
 ==============================================================*/
 
+/** 
+ * Capitalise the first letter of a string
+ * @param {string} string
+ * @return {string}
+ */
+function capitalise(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
  /** 
  * Strips HTML tags from a string
  * @param {string} str
@@ -186,6 +195,17 @@ function truncate(str, len) {
     }
     return str;
 }
+
+/** 
+ * Wraps urls in a string with 'a' tags
+ * @param {string} text
+ * @return {stri}
+ */
+function urlify(text){
+    var regExp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    return text.replace(regExp,"<a href='$1' target='_blank'>$1</a>");
+}
+
 
 /*=============================================================
 * DOM functions
@@ -332,4 +352,49 @@ function randomRGBColor() {
         return num;
     }
     return 'rgb('+rdNum(255)+','+rdNum(255)+','+rdNum(255)+')';
+}
+
+/*=============================================================
+* Cookie functions
+==============================================================*/
+
+/** 
+ * Save a cookie in the browser
+ * @param {string} name
+ * @param {string} value
+ * @param {integer} days
+ */
+function createCookie(name,value,days) {
+    var expires;
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        expires = '; expires='+date.toGMTString();
+    }
+    else expires = '';
+    document.cookie = name+'='+value+expires+'; path=/';
+}
+
+/** 
+ * Returns the value of a cookie
+ * @param {string} name
+ * @return {string | boolean}
+ */
+function readCookie(name) {
+    var n = name + '=';
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(n) === 0) return c.substring(n.length,c.length);
+    }
+    return false;
+}
+
+/** 
+ * Deletes a cookie
+ * @param {string} name
+ */
+function eraseCookie(name) {
+    createCookie(name,'',-1);
 }
