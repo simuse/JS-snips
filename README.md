@@ -1,6 +1,6 @@
 #JS-snips
 
-A collection of vanilla-Javascript utility functions, no dependencies.  
+A collection of Javascript utility functions, no dependencies.  
 Functions were collected accross the web or created by myself.  
 
 ##Table of contents
