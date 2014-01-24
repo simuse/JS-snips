@@ -1,191 +1,237 @@
+var array1 = [1,2,3,4,5,6,7,8,9,5,6,7],
+	array2 = ['banana', 'orange', 'tomato', 'peach', 'orange'],
+	lgString = "Souvent, pour s'amuser, les hommes d'équipage prennent des albatros, vastes oiseaux des mers, Qui suivent, indolents compagnons de voyage, Le navire glissant sur les gouffres amers.";
+
+
+function test(expect, args, fn) {
+	console.log(fn);
+	// fn.apply(args);
+}
+
+function test(tests, consoleElement) {
+    var results = {}, failed = 0,
+        console = typeof(consoleElement) === "string" ?
+            document.getElementById(consoleElement) :
+            consoleElement || document.body;
+    function write(message, color) {
+        if (!console.appendChild) return;
+        var div = document.createElement("div");
+        div.style.color = color;
+        div.innerHTML = message;
+        console.appendChild(div);
+    }
+    for (var testName in tests) {
+        try {
+            tests[testName]();
+            write(testName + " passed", "green");
+            results[testName] = null;
+        }
+        catch (ex) {
+            write(testName + " failed with " + ex.message, "red");
+            results[testName] = ex;
+            failed++;
+        }
+    }
+    if (failed) write(failed + " failed." , "red");
+    return results;
+}
+test.assert = function(condition, failMessage) {
+    if (!condition) throw new Error(failMessage || "Assertion failed.");
+}
+
+
+
+
 $(function(){
-	
-	var array1 = [1,2,3,4,5,6,7,8,9,5,6,7],
-		array2 = ['banana', 'orange', 'tomato', 'peach', 'orange'],
-		lgString = "Souvent, pour s'amuser, les hommes d'équipage prennent des albatros, vastes oiseaux des mers, Qui suivent, indolents compagnons de voyage, Le navire glissant sur les gouffres amers.";
-	
-	// Contains
-	(function(){
-		var div = document.getElementById('contains');
-		if(contains(array1, 5)) {
-			div.innerHTML = div.innerHTML + '<p><i class="icon-ok"></i> array1 contains <b>5</b></p>'
-		}
-		if(contains(array2, 'peach')) {
-			div.innerHTML = div.innerHTML + '<p><i class="icon-ok"></i> array2 contains <b>"peach"</b></p>'
-		}
-		if(!contains(array2, 'cheese')) {
-			div.innerHTML = div.innerHTML + '<p><i class="icon-remove"></i> array2 does not contain <b>"cheese"</b></p>'
-		}
-	})();
-	
-	// Grep
-	(function(){
-		var div = document.getElementById('grep'),
-			reg = new RegExp(/[aeiou]/ig),
-			noVowels = array2.slice(0);
-			grep(noVowels, reg, '*');
-		div.innerHTML = div.innerHTML + '<p>No more vowels: <b>[' + noVowels + ']</b></p>';
-	})();
 
-	// Highest
-	(function(){
-		var div = document.getElementById('highest'),
-			h = highest(array1);
-		div.innerHTML = div.innerHTML + '<p><b>' + h + '</b> is the highest number in array1</p>';
-	})();
-	
-	// Lowest
-	(function(){
-		var div = document.getElementById('lowest'),
-			h = lowest(array1);
-		div.innerHTML = div.innerHTML + '<p><b>' + h + '</b> is the lowest number in array1</p>';
-	})();
-	
-	// RemoveItem
-	(function(){
-		var div = document.getElementById('removeItem'),
-			removed = array2.slice(0);
-		removeItem(removed, 'orange');
-		div.innerHTML = div.innerHTML + '<p>No more "orange": <b>[' + removed + ']</b></p>';
-	})();
+	test('bla', 'blu', cl());
 
-	// Shuffle
-	(function(){
-		var div = document.getElementById('shuffle'),
-			shuffled = array1.slice(0);
-		shuffle(shuffled);
-		div.innerHTML = div.innerHTML + '<p>Shuffled: <b>[' + shuffled + ']</b></p>';
-	})();
+	var cl = function(mot) {
+		alert(mot);
+	}
 
-	// Unique
-	(function(){
-		var div = document.getElementById('unique'),
-			unique1 = unique(array1),
-			unique2 = unique(array2);
-		div.innerHTML = div.innerHTML + '<p>No more duplicates: <b>[' + unique1 + ']</b></p>';
-		div.innerHTML = div.innerHTML + '<p>No more duplicates: <b>[' + unique2 + ']</b></p>';
-	})();
-	
-	// Excerpt
-	(function(){
-		var div = document.getElementById('excerpt'),
-			e = excerpt(lgString, 5);
-		div.innerHTML = div.innerHTML + '<p>' + e + '</p>';
-	})();
-	
-	// isEmail
-	(function(){
-		var div = document.getElementById('isEmail'),
-			email = 'simon.vreux@gmail.com',
-			notEmail = 'www.simonvreux.be';
-		if(isEmail(email)){
-			div.innerHTML = div.innerHTML + '<p><i class="icon-ok"></i> <b>simon.vreux@gmail.com</b> is an email</p>';
-		}
-		if(!isEmail(notEmail)) {
-			div.innerHTML = div.innerHTML + '<p><i class="icon-remove"></i> <b>www.simonvreux.be</b> is not an email</p>';
-		}
-	})();
+// 	// Contains
+// 	(function(){
+// 		var div = document.getElementById('contains');
+// 		if(contains(array1, 5)) {
+// 			div.innerHTML = div.innerHTML + '<p><i class="icon-ok"></i> array1 contains <b>5</b></p>'
+// 		}
+// 		if(contains(array2, 'peach')) {
+// 			div.innerHTML = div.innerHTML + '<p><i class="icon-ok"></i> array2 contains <b>"peach"</b></p>'
+// 		}
+// 		if(!contains(array2, 'cheese')) {
+// 			div.innerHTML = div.innerHTML + '<p><i class="icon-remove"></i> array2 does not contain <b>"cheese"</b></p>'
+// 		}
+// 	})();
 
-	// isURL
-	(function(){
-		var div = document.getElementById('isURL'),
-			url = 'www.simonvreux.be',
-			notUrl = 'Flying-Potato';
-		if(isURL(url)){
-			div.innerHTML = div.innerHTML + '<p><i class="icon-ok"></i> <b>www.simonvreux.be</b> is a URL</p>';
-		}
-		if(!isURL(notUrl)) {
-			div.innerHTML = div.innerHTML + '<p><i class="icon-remove"></i> <b>Flying-Potato</b> is not a URL</p>';
-		}
-	})();
+// 	// Grep
+// 	(function(){
+// 		var div = document.getElementById('grep'),
+// 			reg = new RegExp(/[aeiou]/ig),
+// 			noVowels = array2.slice(0);
+// 			grep(noVowels, reg, '*');
+// 		div.innerHTML = div.innerHTML + '<p>No more vowels: <b>[' + noVowels + ']</b></p>';
+// 	})();
 
-	//prefixURL
-	(function(){
-		var div = document.getElementById('prefixURL'),
-			url = 'www.simonvreux.be',
-			prefixed = prefixURL(url);
-		div.innerHTML = div.innerHTML + '<p><b>'+prefixed+'</b> has been prefixed</p>';
-	})();
-	
-	// Trim
-	(function(){
-		var div = document.getElementById('trim'),
-			string = '            Flying-Potato               ';
-		div.innerHTML = div.innerHTML + '<p><b>'+ trim(string) +'</b> has been trimmed</p>';
-	})();
+// 	// Highest
+// 	(function(){
+// 		var div = document.getElementById('highest'),
+// 			h = highest(array1);
+// 		div.innerHTML = div.innerHTML + '<p><b>' + h + '</b> is the highest number in array1</p>';
+// 	})();
 
-	// Truncate
-	(function(){
-		var div = document.getElementById('truncate'),
-			string = truncate(lgString, 40);
-		div.innerHTML = div.innerHTML + '<p>'+ string +'</p>';
-	})();
+// 	// Lowest
+// 	(function(){
+// 		var div = document.getElementById('lowest'),
+// 			h = lowest(array1);
+// 		div.innerHTML = div.innerHTML + '<p><b>' + h + '</b> is the lowest number in array1</p>';
+// 	})();
 
-	// GetText
-	(function(){
-		var div = document.getElementById('getText'),
-			otherDiv = document.getElementById('trim'),
-			text = getText(otherDiv.getElementsByTagName('p')[0]);
-		div.innerHTML = div.innerHTML + '<p><b>'+ text +'</b> is the text from another div</p>';
-	})();
+// 	// RemoveItem
+// 	(function(){
+// 		var div = document.getElementById('removeItem'),
+// 			removed = array2.slice(0);
+// 		removeItem(removed, 'orange');
+// 		div.innerHTML = div.innerHTML + '<p>No more "orange": <b>[' + removed + ']</b></p>';
+// 	})();
 
-	// addClass
-	(function(){
-		var div = document.getElementById('addClass');
-		addClass(div, 'red');
-		div.innerHTML = div.innerHTML + '<p>A class of <b>red</b> has been added</p>';
-	})();
-	
-	// hasClass
-	(function(){
-		var div = document.getElementById('hasClass'),
-			otherDiv = document.getElementById('addClass');
-		if(hasClass(otherDiv, 'red')) {
-			div.innerHTML = div.innerHTML + '<p>AddClass has a class of <b>red</b></p>';
-		}
-	})();
+// 	// Shuffle
+// 	(function(){
+// 		var div = document.getElementById('shuffle'),
+// 			shuffled = array1.slice(0);
+// 		shuffle(shuffled);
+// 		div.innerHTML = div.innerHTML + '<p>Shuffled: <b>[' + shuffled + ']</b></p>';
+// 	})();
 
-	// removeClass
-	(function(){
-		var div = document.getElementById('removeClass');
-		removeClass(div, 'red');
-		div.innerHTML = div.innerHTML + '<p>The class of <b>red</b> has been removed from this div</p>';
-	})();
+// 	// Unique
+// 	(function(){
+// 		var div = document.getElementById('unique'),
+// 			unique1 = unique(array1),
+// 			unique2 = unique(array2);
+// 		div.innerHTML = div.innerHTML + '<p>No more duplicates: <b>[' + unique1 + ']</b></p>';
+// 		div.innerHTML = div.innerHTML + '<p>No more duplicates: <b>[' + unique2 + ']</b></p>';
+// 	})();
 
-	// removeChildren
-	(function(){
-		var div = document.getElementById('removeChildren');
-		removeChildren(div);
-		div.innerHTML = div.innerHTML + '<h5>removeChildren</h5><p>Children have been removed from this div (then added again)</p>';
-	})();
+// 	// Excerpt
+// 	(function(){
+// 		var div = document.getElementById('excerpt'),
+// 			e = excerpt(lgString, 5);
+// 		div.innerHTML = div.innerHTML + '<p>' + e + '</p>';
+// 	})();
 
-	// randomRGBColor
-	(function(){
-		var div = document.getElementById('randomRGBColor');
-		div.style.background = randomRGBColor();
-		div.innerHTML = div.innerHTML + '<p>This div has a random background color</p>';
-	})();
+// 	// isEmail
+// 	(function(){
+// 		var div = document.getElementById('isEmail'),
+// 			email = 'simon.vreux@gmail.com',
+// 			notEmail = 'www.simonvreux.be';
+// 		if(isEmail(email)){
+// 			div.innerHTML = div.innerHTML + '<p><i class="icon-ok"></i> <b>simon.vreux@gmail.com</b> is an email</p>';
+// 		}
+// 		if(!isEmail(notEmail)) {
+// 			div.innerHTML = div.innerHTML + '<p><i class="icon-remove"></i> <b>www.simonvreux.be</b> is not an email</p>';
+// 		}
+// 	})();
 
-	// formatDate
-	(function(){
-		var div = document.getElementById('formatDate'),
-			time = new Date().getTime();
-			formated = formatDate(time);
-		div.innerHTML = div.innerHTML + '<p>The formated date : <b>' + formated + '</b></p>';
-	})();
+// 	// isURL
+// 	(function(){
+// 		var div = document.getElementById('isURL'),
+// 			url = 'www.simonvreux.be',
+// 			notUrl = 'Flying-Potato';
+// 		if(isURL(url)){
+// 			div.innerHTML = div.innerHTML + '<p><i class="icon-ok"></i> <b>www.simonvreux.be</b> is a URL</p>';
+// 		}
+// 		if(!isURL(notUrl)) {
+// 			div.innerHTML = div.innerHTML + '<p><i class="icon-remove"></i> <b>Flying-Potato</b> is not a URL</p>';
+// 		}
+// 	})();
 
-	(function(){
-		var div = document.getElementById('getWindowSize'),
-			win = getWindowSize();
-		div.innerHTML = div.innerHTML + '<p>The window is <b>' + win[0] + 'px</b> wide and <b>' + win[1] + 'px</b> high</p>';
-	})();
+// 	//prefixURL
+// 	(function(){
+// 		var div = document.getElementById('prefixURL'),
+// 			url = 'www.simonvreux.be',
+// 			prefixed = prefixURL(url);
+// 		div.innerHTML = div.innerHTML + '<p><b>'+prefixed+'</b> has been prefixed</p>';
+// 	})();
 
-	(function(){
-		var el = document.getElementById('scroll');
-		window.onscroll = function() {
-			var scroll = getScrollTop();
-			el.innerHTML = scroll;
-		};
-	})();
+// 	// Trim
+// 	(function(){
+// 		var div = document.getElementById('trim'),
+// 			string = '            Flying-Potato               ';
+// 		div.innerHTML = div.innerHTML + '<p><b>'+ trim(string) +'</b> has been trimmed</p>';
+// 	})();
+
+// 	// Truncate
+// 	(function(){
+// 		var div = document.getElementById('truncate'),
+// 			string = truncate(lgString, 40);
+// 		div.innerHTML = div.innerHTML + '<p>'+ string +'</p>';
+// 	})();
+
+// 	// GetText
+// 	(function(){
+// 		var div = document.getElementById('getText'),
+// 			otherDiv = document.getElementById('trim'),
+// 			text = getText(otherDiv.getElementsByTagName('p')[0]);
+// 		div.innerHTML = div.innerHTML + '<p><b>'+ text +'</b> is the text from another div</p>';
+// 	})();
+
+// 	// addClass
+// 	(function(){
+// 		var div = document.getElementById('addClass');
+// 		addClass(div, 'red');
+// 		div.innerHTML = div.innerHTML + '<p>A class of <b>red</b> has been added</p>';
+// 	})();
+
+// 	// hasClass
+// 	(function(){
+// 		var div = document.getElementById('hasClass'),
+// 			otherDiv = document.getElementById('addClass');
+// 		if(hasClass(otherDiv, 'red')) {
+// 			div.innerHTML = div.innerHTML + '<p>AddClass has a class of <b>red</b></p>';
+// 		}
+// 	})();
+
+// 	// removeClass
+// 	(function(){
+// 		var div = document.getElementById('removeClass');
+// 		removeClass(div, 'red');
+// 		div.innerHTML = div.innerHTML + '<p>The class of <b>red</b> has been removed from this div</p>';
+// 	})();
+
+// 	// removeChildren
+// 	(function(){
+// 		var div = document.getElementById('removeChildren');
+// 		removeChildren(div);
+// 		div.innerHTML = div.innerHTML + '<h5>removeChildren</h5><p>Children have been removed from this div (then added again)</p>';
+// 	})();
+
+// 	// randomRGBColor
+// 	(function(){
+// 		var div = document.getElementById('randomRGBColor');
+// 		div.style.background = randomRGBColor();
+// 		div.innerHTML = div.innerHTML + '<p>This div has a random background color</p>';
+// 	})();
+
+// 	// formatDate
+// 	(function(){
+// 		var div = document.getElementById('formatDate'),
+// 			time = new Date().getTime();
+// 			formated = formatDate(time);
+// 		div.innerHTML = div.innerHTML + '<p>The formated date : <b>' + formated + '</b></p>';
+// 	})();
+
+// 	(function(){
+// 		var div = document.getElementById('getWindowSize'),
+// 			win = getWindowSize();
+// 		div.innerHTML = div.innerHTML + '<p>The window is <b>' + win[0] + 'px</b> wide and <b>' + win[1] + 'px</b> high</p>';
+// 	})();
+
+// 	(function(){
+// 		var el = document.getElementById('scroll');
+// 		window.onscroll = function() {
+// 			var scroll = getScrollTop();
+// 			el.innerHTML = scroll;
+// 		};
+// 	})();
 
 });
